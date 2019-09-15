@@ -10,17 +10,32 @@ export class TodoItem extends Component {
       'line-through' : 'none'
   })
 
+  sayHello = () => console.log('hello');
+
   render() {
     const { id, title } = this.props.todo;
     return (
       <div style={this.getStyle()}>
         <p>
-          <input type="checkbox" onChange={this.props.markComplete.bind(this, id)} /> {' '}
-          {title}
+          <input type="checkbox" onChange={this.props.markComplete.bind(this, id)} />
+          {' '} {title}
+          <button style={btnStyle} onClick={this.props.delete.bind(this, id)}>
+            x
+          </button>
         </p>
       </div>
     )
   }
+}
+
+const btnStyle = {
+  background: '#ff0000',
+  color: '#ffffff',
+  border: 'none',
+  padding: '5px 10px',
+  borderRadius: '50%',
+  cursor: 'pointer',
+  float: 'right'
 }
 
 TodoItem.propTypes = {
